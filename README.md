@@ -1,53 +1,77 @@
-# Claude Code Template for Spring Boot Application
+# User Management REST API
 
-This template provides a structured starting point for Spring Boot applications, optimized for Claude AI's code completion capabilities. It includes essential configurations and best practices to streamline development and enhance productivity.
+A Spring Boot application providing REST API endpoints for user management operations.
 
-The idea behind this template is that you can just clone this repository and use it to generate the app you want with Claude Code.
+## Version
+1.0.1
 
-```shell
-.
-├── .claude
-│   ├── agents
-│   │   ├── code-reviewer.md
-│   │   ├── devops-engineer.md
-│   │   ├── docker-expert.md
-│   │   ├── java-architect.md
-│   │   ├── kubernetes-specialist.md
-│   │   ├── security-engineer.md
-│   │   ├── spring-boot-engineer.md
-│   │   └── test-automator.md
-│   ├── settings.local.json
-│   └── skills
-│       ├── README.md
-│       ├── api-contract-review
-│       │   └── SKILL.md
-│       ├── clean-code
-│       │   └── SKILL.md
-│       ├── design-patterns
-│       │   └── SKILL.md
-│       ├── java-architect
-│       │   ├── SKILL.md
-│       │   └── references
-│       │       ├── jpa-optimization.md
-│       │       ├── reactive-webflux.md
-│       │       ├── spring-boot-setup.md
-│       │       ├── spring-security.md
-│       │       └── testing-patterns.md
-│       ├── java-code-review
-│       │   └── SKILL.md
-│       ├── jpa-patterns
-│       │   └── SKILL.md
-│       ├── logging-patterns
-│       │   └── SKILL.md
-│       ├── spring-boot-engineer
-│       │   ├── SKILL.md
-│       │   └── references
-│       │       ├── cloud.md
-│       │       ├── data.md
-│       │       ├── security.md
-│       │       ├── testing.md
-│       │       └── web.md
-│       └── spring-boot-patterns
+## Features
+
+- **CRUD Operations**: Create, Read, Update, Delete users
+- **Validation**: Input validation with Bean Validation
+- **Error Handling**: Global exception handling with meaningful error messages
+- **Database**: H2 in-memory database for development
+- **REST API**: JSON-based REST endpoints
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/v1/users` | Get all users |
+| GET | `/api/v1/users/{id}` | Get user by ID |
+| POST | `/api/v1/users` | Create a new user |
+| PUT | `/api/v1/users/{id}` | Update an existing user |
+| DELETE | `/api/v1/users/{id}` | Delete a user |
+
+## User Model
+
+```json
+{
+  "id": 1,
+  "name": "John Doe",
+  "email": "john@example.com",
+  "createdAt": "2024-01-01T10:00:00",
+  "updatedAt": "2024-01-01T10:00:00"
+}
+```
+
+## Running the Application
+
+### Prerequisites
+- Java 17
+- Maven 3.6+
+
+### Local Development
+```bash
+mvn spring-boot:run
+```
+
+The application will start on http://localhost:8080
+
+### Docker
+```bash
+docker-compose up --build
+```
+
+### H2 Console
+When running locally, access H2 console at: http://localhost:8080/h2-console
+
+- JDBC URL: `jdbc:h2:mem:testdb`
+- Username: `sa`
+- Password: (empty)
+
+## Testing
+```bash
+mvn test
+```
+
+## Building
+```bash
+mvn clean package
+```
+
+## CI/CD
+This project uses CircleCI for continuous integration. The pipeline runs tests and builds the application.
 │           └── SKILL.md
 ├── CLAUDE.md
 ├── README.md
